@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html ng-app="toDoListApp">
+<head>
+  <meta charset="utf-8">
+  <title>JS Bin</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+</head>
+<body ng-controller="toDoListCtrl as list" background="http://imgapi.nownews.com/?w=800&q=80&src=http%3A%2F%2Fs.nownews.com%2F00%2F98%2F00983b55cac0b0259334f9cc8c3b5dbd.jpg" background-repeat:no-repeat >
+  <h2 align="center"><i>待辦清單使用器</i></h2>
+  <a href="https://www.facebook.com/nancy1524" target="_blank"><span class=" glyphicon glyphicon-user" aria-hidden="true">認識作者</span></a> 
+ 
+   <h3 align="left">待辦事項共有{{list.tasks.length}}項，尚有{{list.getRemainingNum()}}項未完成。</h3>
+  <hr size="2" align="left" noshade width="100%" color="green">
+  
+  <button class="btn btn-danger" ng-click="list.archive()">刪除已完成項目</button>
+  
+  <ul>
+     <li ng-repeat="i in list.tasks">
+       <input type="checkbox"ng-model="i.isDone"/>
+       <span ng-bind="i.text"></span>
+    </li>
+  </ul>
+  <form ng-submit="list.add()">
+    <input type="text" ng-model="list.newItemText"/>
+    <input type="submit" value="add" class="btn btn-success"/>
+  </form>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>     
+<script src="./app.js"> </script>
+</body>
+</html>
